@@ -4,16 +4,16 @@ package hundirLaFlota;
 public class Tablero {
 	
 	
-	private static int tamX = 11;
-	private static int tamY = 11;
+	private static int TAM_X = 11;
+	private static int TAM_Y = 11;
 	
-	int[][] matriz = new int[tamX][tamY];
+	int[][] matriz = new int[TAM_X][TAM_Y];
 	
 	
 	public Tablero() {
 		
-		tamX = 11;
-		tamY = 11;
+		TAM_X = 11;
+		TAM_Y = 11;
 		
 		Tablero.rellenarMatrizNumAzarInt(matriz);
 		
@@ -91,21 +91,21 @@ public class Tablero {
 	
 
 	public static int getTamX() {
-		return tamX;
+		return TAM_X;
 	}
 
 
 	public static void setTamX(int tamX) {
-		Tablero.tamX = tamX;
+		Tablero.TAM_X = tamX;
 	}
 
 
 	public static int getTamY() {
-		return tamY;
+		return TAM_Y;
 	}
 
 
 	public static void setTamY(int tamY) {
-		Tablero.tamY = tamY;
+		Tablero.TAM_Y = tamY;
 	}
 }

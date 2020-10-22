@@ -4,11 +4,9 @@ public class Juego {
 
 	public static void main(String[] args) {
 		
-		Tablero tablero = new Tablero();
-
+		Jugador jugador = new Jugador();
 		
-		tablero.mostrarTablero();
-
+	
 	}
 
 }
