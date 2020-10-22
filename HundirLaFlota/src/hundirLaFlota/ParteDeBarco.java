@@ -17,6 +17,12 @@ public class ParteDeBarco {
 		tocado = false;
 	}
 	
+	public ParteDeBarco() {
+		coordX = 0;
+		coordY = 0;
+		tocado = false;
+	}
+	
 	/**
 	 * Constructor con dos coordenadas y estado tocado
 	 * @param x	(int) Coordenada X
