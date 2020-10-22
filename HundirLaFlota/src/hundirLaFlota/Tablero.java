@@ -6,6 +6,7 @@ public class Tablero {
 	
 	private static int tamX = 11;
 	private static int tamY = 11;
+	
 	int[][] matriz = new int[tamX][tamY];
 	
 	
@@ -15,7 +16,7 @@ public class Tablero {
 		tamY = 11;
 		
 		Tablero.rellenarMatrizNumAzarInt(matriz);
-		Tablero.mostrarMatriz(matriz);
+		
 		
 	}
 	
@@ -60,6 +61,7 @@ public class Tablero {
 	/**
 	 * 
 	 * @param matrizVar
+	 * @return 
 	 */
 	public static void mostrarMatriz (int[][] matrizVar) {
 		
@@ -74,10 +76,17 @@ public class Tablero {
 			
 			System.out.print("\n");
 		}
+		
 	}
 	
 	
-	
+	public void mostrarTablero () {
+		
+		
+		 Tablero.mostrarMatriz(this.matriz);
+		
+		
+	}
 	
 	
 
