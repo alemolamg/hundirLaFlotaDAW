@@ -1,5 +1,7 @@
 package hundirLaFlota;
 
+
+
 public class Jugador {
 
 	String nombreJugador;
@@ -18,9 +20,9 @@ public class Jugador {
 		//Debe de tener un barco en el constructor? o en un metodo?
 		
 		// Cada jugador tendra 3 barcos distintos
-		Barco portaviones = new Barco();
-		Barco fragata = new Barco();
-		Barco submarino = new Barco();
+		Barco portaviones = new Barco(4);
+		Barco fragata = new Barco(3);
+		Barco submarino = new Barco(2);
 		
 		
 		
