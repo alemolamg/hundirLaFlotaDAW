@@ -7,7 +7,7 @@ public class Tablero {
 	private static int TAM_X = 11;
 	private static int TAM_Y = 11;
 	
-	int[][] matriz = new int[TAM_X][TAM_Y];
+	public static int[][] matriz = new int[TAM_X][TAM_Y];
 	
 	
 	public Tablero() {
@@ -116,9 +116,9 @@ public class Tablero {
 	 * @param y posición Y
 	 * @return	boolean: true si lo puede colocar, false si no puede.
 	 */
-	public boolean aniadirParteBarco (int x, int y) {
-		if (this.matriz[x][y] == 0)
-			this.matriz[x][y] = 1;
+	public static boolean aniadirParteBarco (int x, int y) {
+		if (matriz[x][y] == 0)
+			matriz[x][y] = 1;
 		else
 			return false;
 		return true;		
