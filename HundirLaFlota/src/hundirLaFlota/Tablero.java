@@ -108,4 +108,19 @@ public class Tablero {
 	public static void setTamY(int tamY) {
 		Tablero.TAM_Y = tamY;
 	}
+	
+	
+	/**
+	 * Método que sirve para añadir a una casilla la posición de colocar el barco
+	 * @param x	posición X
+	 * @param y posición Y
+	 * @return	boolean: true si lo puede colocar, false si no puede.
+	 */
+	public boolean aniadirParteBarco (int x, int y) {
+		if (this.matriz[x][y] == 0)
+			this.matriz[x][y] = 1;
+		else
+			return false;
+		return true;		
+	}
 }
