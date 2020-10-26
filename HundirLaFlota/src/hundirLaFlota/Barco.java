@@ -116,23 +116,89 @@ public class Barco {
 
 	
 	public void calcularDireccion (int posX, int posY, String direccion) {
-				
+		boolean poder = true;		
 		if (direccion == "Derecha")
-			this.colocarDerecha(posX, posY);
-			
+			poder = this.colocarDerecha(posX, posY);
+		if (direccion == "Izquierda")
+			poder = this.colocarIzquierda(posX, posY);	
+		if (direccion == "Arriba")
+			poder = this.colocarArriba(posX, posY);
+		if (direccion == "Abajo")
+			poder = this.colocarAbajo(posX, posY);
 		
+		if (poder)
+			System.out.println("Barco introducido correctamente");
+		else
+			System.out.println("No se ha podido introducir el Barco");
 		
 	}
 	
-	
-	private void colocarDerecha (int posX, int posY) {
-		boolean wanda;
+	/**
+	 * Coloca el barco en la dirección Derecha.
+	 * @param posX	posición inicial de la X
+	 * @param posY	posición inicial de la Y
+	 * @return	True si puede meterlo, false si no.
+	 */
+	private boolean colocarDerecha (int posX, int posY) {
 		if((tamanioBarco + posX -1) < Tablero.getTamX())
 			for (int i = posX; i < this.tamanioBarco + posX; i++) { 	//Recorrer las casillas hacia la derecha
-				Tablero.matriz[posX][posY] = 1;						//Error, no se puede añadir a la casilla.
+//				Tablero.matriz[posX][posY] = 1;						//Error, no se puede añadir a la casilla.
+				Tablero.aniadirParteBarco(i, posY);
 			}
-		
-		
+		else 
+			return false;
+		return true;	
 	}
+
+	
+	/**
+	 * Coloca el barco en la dirección Izquierda.
+	 * @param posX	posición inicial de la X
+	 * @param posY	posición inicial de la Y
+	 * @return	True si puede meterlo, false si no.
+	 */
+	private boolean colocarIzquierda (int posX, int posY) {
+		if((tamanioBarco - posX + 1) >= 0)
+			for (int i = posX; i >= 0; i--) { 	//Recorrer las casillas hacia la Izquierda.
+				Tablero.aniadirParteBarco(i, posY);
+			}
+		else 
+			return false;
+		return true;	
+	}
+	
+	
+	/**
+	 * Coloca el barco en la dirección Arriba.
+	 * @param posX	posición inicial de la X
+	 * @param posY	posición inicial de la Y
+	 * @return	True si puede meterlo, false si no.
+	 */
+	private boolean colocarArriba (int posX, int posY) {
+		if((tamanioBarco + posY -1) < Tablero.getTamY())
+			for (int i = posY; i < this.tamanioBarco + posY; i++) { 	//Recorrer las casillas hacia la Arriba.
+				Tablero.aniadirParteBarco(posX, i);
+			}
+		else 
+			return false;
+		return true;	
+	}
+	
+	/**
+	 * Coloca el barco en la dirección Abajo.
+	 * @param posX	posición inicial de la X
+	 * @param posY	posición inicial de la Y
+	 * @return	True si puede meterlo, false si no.
+	 */
+	private boolean colocarAbajo (int posX, int posY) {
+		if((tamanioBarco - posY + 1) >= 0)
+			for (int i = posY; i >= 0; i--) { 	//Recorrer las casillas hacia la Izquierda.
+				Tablero.aniadirParteBarco(posX, i);
+			}
+		else 
+			return false;
+		return true;	
+	}
+	
 	
 }
