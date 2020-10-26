@@ -117,7 +117,7 @@ public class Barco {
 	
 	public void calcularDireccion (int posX, int posY, String direccion) {
 				
-		if (direccion = "Derecha")
+		if (direccion == "Derecha")
 			this.colocarDerecha(posX, posY);
 			
 		
@@ -126,11 +126,11 @@ public class Barco {
 	
 	
 	private void colocarDerecha (int posX, int posY) {
-		
-		for (int i = posX; i < this.tamanioBarco + posX && (tamanioBarco + posX -1) < Tablero.getTamX(); i++) { 	//Recorrer las casillas hacia la derecha
-		
-			
-		}
+		boolean wanda;
+		if((tamanioBarco + posX -1) < Tablero.getTamX())
+			for (int i = posX; i < this.tamanioBarco + posX; i++) { 	//Recorrer las casillas hacia la derecha
+				Tablero.matriz[posX][posY] = 1;						//Error, no se puede añadir a la casilla.
+			}
 		
 		
 	}
