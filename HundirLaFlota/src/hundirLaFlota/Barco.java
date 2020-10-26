@@ -144,6 +144,8 @@ public class Barco {
 			for (int i = posX; i < this.tamanioBarco + posX; i++) { 	//Recorrer las casillas hacia la derecha
 //				Tablero.matriz[posX][posY] = 1;						//Error, no se puede añadir a la casilla.
 				Tablero.aniadirParteBarco(i, posY);
+				this.listaPartes.get(i).setCoordX(i);
+				this.listaPartes.get(i).setCoordY(posY);
 			}
 		else 
 			return false;
