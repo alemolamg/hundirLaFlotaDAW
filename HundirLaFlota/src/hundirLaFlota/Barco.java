@@ -1,8 +1,10 @@
 package hundirLaFlota;
 
 import java.util.ArrayList;
+
 import java.util.Iterator;
 import java.util.List;
+
 import hundirLaFlota.ParteDeBarco;
 
 public class Barco {
@@ -10,6 +12,7 @@ public class Barco {
 	private List<ParteDeBarco> listaPartes = new ArrayList<ParteDeBarco>();
 	private boolean hundido = false;
 	private int direccion;
+	private Tablero tableroPartida;
 	
 
 	public Barco(int tamanio) {
@@ -140,12 +143,23 @@ public class Barco {
 	 * @return	True si puede meterlo, false si no.
 	 */
 	private boolean colocarDerecha (int posX, int posY) {
-		if((tamanioBarco + posX -1) < Tablero.getTamX())
-			for (int i = posX; i < this.tamanioBarco + posX; i++) { 	//Recorrer las casillas hacia la derecha
-//				Tablero.matriz[posX][posY] = 1;						//Error, no se puede añadir a la casilla.
-				Tablero.aniadirParteBarco(i, posY);
+		if((tamanioBarco + posX -1) < tableroPartida.getTamX()) {
+			int i = posX;
+//			for (i = posX; i < this.tamanioBarco + posX; i++) { 	//Recorrer las casillas hacia la derecha
+////				Tablero.matriz[posX][posY] = 1;						//Error, no se puede añadir a la casilla.
+//				Tablero.aniadirParteBarco(i, posY);
+//				this.listaPartes.get(i).setCoordX(i);
+//				this.listaPartes.get(i).setCoordY(posY);
+//			}
+//		
+			for (ParteDeBarco iterator : this.listaPartes) {
+				iterator.setCoordX(i);
+				iterator.setCoordY(posY);
+				this.tableroPartida.aniadirParteBarco(i, posY);
+				i++;
 			}
-		else 
+		
+		}else 
 			return false;
 		return true;	
 	}
