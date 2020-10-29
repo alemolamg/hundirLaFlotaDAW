@@ -1,18 +1,23 @@
 package hundirLaFlota;
 
 import java.util.ArrayList;
-
 import java.util.Iterator;
 import java.util.List;
 
 import hundirLaFlota.ParteDeBarco;
 
+/**
+ * Clase Barco creada para trabajar con las funciones.
+ * Es la clase que realiza las acciones.
+ * @author Alemol
+ * {@link https://github.com/alemolamg/hundirLaFlotaDAW.git}
+ */
 public class Barco {
 	private int tamanioBarco;
 	private List<ParteDeBarco> listaPartes = new ArrayList<ParteDeBarco>();
 	private boolean hundido = false;
 	private int direccion;
-	private Tablero tableroPartida;
+//	private Tablero tableroPartida;
 	
 
 	public Barco(int tamanio) {
@@ -117,17 +122,24 @@ public class Barco {
 		return buscaParte;		
 	}
 
-	
-	public void calcularDireccion (int posX, int posY, String direccion) {
-		boolean poder = true;		
+	/**
+	 * Calcula que dirección debe usar.
+	 * Importante, solo hay cuatro direcciones válidas
+	 * @param posX  (int) Posición inicial de la X
+	 * @param posY	(int) Posición inicial de la Y
+	 * @param direccion	(String) espera: Derecha, Izquierda, Arriba, Abajo. Otro valor no funciona.
+	 * @param tableroPartida 
+	 */
+	public void calcularDireccion (int posX, int posY, String direccion, Tablero tableroPartida) {
+		boolean poder = false;		
 		if (direccion == "Derecha")
-			poder = this.colocarDerecha(posX, posY);
+			poder = this.colocarDerecha(posX, posY, tableroPartida);
 		if (direccion == "Izquierda")
-			poder = this.colocarIzquierda(posX, posY);	
+			poder = this.colocarIzquierda(posX, posY, tableroPartida);	
 		if (direccion == "Arriba")
-			poder = this.colocarArriba(posX, posY);
+			poder = this.colocarArriba(posX, posY, tableroPartida);
 		if (direccion == "Abajo")
-			poder = this.colocarAbajo(posX, posY);
+			poder = this.colocarAbajo(posX, posY, tableroPartida);
 		
 		if (poder)
 			System.out.println("Barco introducido correctamente");
@@ -140,22 +152,23 @@ public class Barco {
 	 * Coloca el barco en la dirección Derecha.
 	 * @param posX	posición inicial de la X
 	 * @param posY	posición inicial de la Y
+	 * @param tabPartida (Tablero) Tablero donde se añade las partes.
 	 * @return	True si puede meterlo, false si no.
 	 */
-	private boolean colocarDerecha (int posX, int posY) {
-		if((tamanioBarco + posX -1) < tableroPartida.getTamX()) {
+	private boolean colocarDerecha (int posX, int posY, Tablero tabPartida) {
+		if((tamanioBarco + posX -1) < tabPartida.getTamX()) {
 			int i = posX;
 //			for (i = posX; i < this.tamanioBarco + posX; i++) { 	//Recorrer las casillas hacia la derecha
-////				Tablero.matriz[posX][posY] = 1;						//Error, no se puede añadir a la casilla.
+//				Tablero.matriz[posX][posY] = 1;						//Error, no se puede añadir a la casilla.
 //				Tablero.aniadirParteBarco(i, posY);
 //				this.listaPartes.get(i).setCoordX(i);
 //				this.listaPartes.get(i).setCoordY(posY);
 //			}
 //		
-			for (ParteDeBarco iterator : this.listaPartes) {
+			for (ParteDeBarco iterator : this.listaPartes) {	//for-each para recorrer la listaPartes
 				iterator.setCoordX(i);
 				iterator.setCoordY(posY);
-				this.tableroPartida.aniadirParteBarco(i, posY);
+				tabPartida.aniadirParteBarco(i, posY);
 				i++;
 			}
 		
@@ -169,14 +182,19 @@ public class Barco {
 	 * Coloca el barco en la dirección Izquierda.
 	 * @param posX	posición inicial de la X
 	 * @param posY	posición inicial de la Y
+	 * @param tabPartida (Tablero) Tablero donde se añade las partes.
 	 * @return	True si puede meterlo, false si no.
 	 */
-	private boolean colocarIzquierda (int posX, int posY) {
-		if((tamanioBarco - posX + 1) >= 0)
-			for (int i = posX; i >= 0; i--) { 	//Recorrer las casillas hacia la Izquierda.
-				Tablero.aniadirParteBarco(i, posY);
+	private boolean colocarIzquierda (int posX, int posY, Tablero tabPartida) {
+		if((tamanioBarco - posX + 1) >= 0) {
+			int i = posX;
+			for (ParteDeBarco iterator : this.listaPartes) {	//for-each para recorrer la listaPartes
+				iterator.setCoordX(i);
+				iterator.setCoordY(posY);
+				tabPartida.aniadirParteBarco(i, posY);
+				i--;
 			}
-		else 
+		} else 
 			return false;
 		return true;	
 	}
@@ -186,30 +204,40 @@ public class Barco {
 	 * Coloca el barco en la dirección Arriba.
 	 * @param posX	posición inicial de la X
 	 * @param posY	posición inicial de la Y
+	 * @param tabPartida (Tablero) Tablero donde se añade las partes.
 	 * @return	True si puede meterlo, false si no.
 	 */
-	private boolean colocarArriba (int posX, int posY) {
-		if((tamanioBarco + posY -1) < Tablero.getTamY())
-			for (int i = posY; i < this.tamanioBarco + posY; i++) { 	//Recorrer las casillas hacia la Arriba.
-				Tablero.aniadirParteBarco(posX, i);
+	private boolean colocarArriba (int posX, int posY, Tablero tabPartida) {
+		if((tamanioBarco + posY -1) < Tablero.getTamY()) {
+			int i = posY;
+			for (ParteDeBarco iterator : this.listaPartes) {	//for-each para recorrer la listaPartes
+				iterator.setCoordX(posX);
+				iterator.setCoordY(i);
+				tabPartida.aniadirParteBarco(posX, i);
+				i++;
 			}
-		else 
+		}else 
 			return false;
 		return true;	
 	}
 	
 	/**
 	 * Coloca el barco en la dirección Abajo.
-	 * @param posX	posición inicial de la X
-	 * @param posY	posición inicial de la Y
+	 * @param posX	(int) posición inicial de la X
+	 * @param posY	(int) posición inicial de la Y
+	 * @param tabPartida (Tablero) Tablero donde se añade las partes.
 	 * @return	True si puede meterlo, false si no.
 	 */
-	private boolean colocarAbajo (int posX, int posY) {
-		if((tamanioBarco - posY + 1) >= 0)
-			for (int i = posY; i >= 0; i--) { 	//Recorrer las casillas hacia la Izquierda.
-				Tablero.aniadirParteBarco(posX, i);
+	private boolean colocarAbajo (int posX, int posY, Tablero tabPartida) {
+		if((tamanioBarco - posY + 1) >= 0) {
+			int i = posY;
+			for (ParteDeBarco iterator : this.listaPartes) {	//for-each para recorrer la listaPartes
+				iterator.setCoordX(posX);
+				iterator.setCoordY(i);
+				tabPartida.aniadirParteBarco(posX, i);
+				i--;
 			}
-		else 
+		}else
 			return false;
 		return true;	
 	}
