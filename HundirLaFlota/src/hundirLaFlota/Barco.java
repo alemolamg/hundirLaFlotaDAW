@@ -23,7 +23,7 @@ public class Barco {
 	public Barco(int tamanio) {
 		tamanioBarco = tamanio;
 		for (int i = 0; i < tamanioBarco; i++) {
-			listaPartes.add(new ParteDeBarco());
+			listaPartes.add(new ParteDeBarco(0,0));
 		}
 		hundido = false;			
 	}
@@ -241,6 +241,7 @@ public class Barco {
 			return false;
 		return true;	
 	}
+	
 	
 	
 }
