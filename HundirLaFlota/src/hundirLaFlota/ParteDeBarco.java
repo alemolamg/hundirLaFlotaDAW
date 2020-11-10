@@ -7,23 +7,6 @@ public class ParteDeBarco {
 	
 	
 	/**
-	 * Constructor con dos coordenadas.
-	 * @param x	(int) Coordenada X
-	 * @param y	(int) Coordenada Y
-	 */
-	public ParteDeBarco (int x, int y) {
-		coordX = x;
-		coordY = y;
-		tocado = false;
-	}
-	
-	public ParteDeBarco() {
-		coordX = 0;
-		coordY = 0;
-		tocado = false;
-	}
-	
-	/**
 	 * Constructor con dos coordenadas y estado tocado
 	 * @param x	(int) Coordenada X
 	 * @param y	(int) Coordenada Y
@@ -35,6 +18,16 @@ public class ParteDeBarco {
 		tocado = estado;
 	}
 
+	/**
+	 * Constructor con dos coordenadas.
+	 * @param x	(int) Coordenada X
+	 * @param y	(int) Coordenada Y
+	 */
+	public ParteDeBarco (int x, int y) {
+		this.coordX = x;
+		this.coordY = y;
+		this.tocado = false;
+	}
 	
 	/**
 	 * @return the coordX
