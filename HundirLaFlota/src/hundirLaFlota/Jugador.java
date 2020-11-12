@@ -1,6 +1,6 @@
 package hundirLaFlota;
 
-
+import alemol.*;
 
 public class Jugador {
 
@@ -37,16 +37,23 @@ public class Jugador {
 	public static int[][] colocarBarcos() {
 		
 		//Bucle donde pediremos al jugador que situe los barcos 
-		for (int i = 0; i < 3 ; i++) {
-			
-			
-			
+		for (int i = 0; i < 3 ; i++) {			
 			contadorBarcos++;
 		}
 		return null;
-		
 	}
 	
+	
+	public static void lanzaTiradaSobreTablero(Jugador rival) {
+		int x,y;
+		System.out.println("Escribe la posición X del disparo: ");
+		x = UtilsAlemol.obtenerEnteroScanner();
+		System.out.println("Escribe la posición Y del disparo: ");
+		y = UtilsAlemol.obtenerEnteroScanner();
+		
+		if(x -)
+		
+	}
 	
 	
 	
